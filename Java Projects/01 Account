@@ -1,0 +1,73 @@
+//Program that simulates a bank account, includes options for creating an account object, withdrawing, deposting, and transfering money.
+
+public class Account
+{
+    // instance variables - replace the example below with your own
+    private double balance;
+    private int accountNumber;
+
+    public Account()
+    {
+        // initialise instance variables
+        balance = 0;
+        accountNumber = 10;
+    }
+    
+    public Account(double b, int n)
+    {
+        balance = b;
+        accountNumber = n;
+    }
+
+    public double getBalance()
+    {
+        return balance;
+    }
+    
+    public int getAccountNumber()
+    {
+        return accountNumber;
+    }
+    
+    public void deposit(double d)
+    {
+        balance = balance + d;
+    }
+    
+    public void withdraw(double w)
+    {
+        balance = balance - w;
+    }
+    
+    public void transfer(Account other, double t)
+    {
+        this.withdraw(t);
+        other.deposit(t);
+    }
+    
+    public void printSlip()
+    {
+        System.out.println("Your account number is " + getAccountNumber());
+        System.out.println("Your current balance is " + getBalance());
+    }
+}
+
+
+public class TestAccount
+{
+    // instance variables - replace the example below with your own
+    public static void main()
+    {
+        Account ac1 = new Account(100, 1);
+        ac1.printSlip();
+        ac1.deposit(300);
+        ac1.printSlip();
+        ac1.withdraw(23.45);
+        ac1.printSlip();
+        
+        Account ac2 = new Account();
+        ac1.transfer(ac2, 25);
+        ac1.printSlip();
+        ac2.printSlip();
+    }
+}
