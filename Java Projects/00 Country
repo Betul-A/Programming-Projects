@@ -1,3 +1,5 @@
+//program that creates a country class that simulates creating an actual country. 
+
 public class Country
 {
     // instance variables - replace the example below with your own
