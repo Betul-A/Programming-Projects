@@ -1,0 +1,99 @@
+public class Country
+{
+    // instance variables - replace the example below with your own
+    private String name;
+    private double areaInSquareKilometers;
+    private int population;
+    private boolean isUnitedNationsMember;
+    private boolean isCountryInDebt;
+
+    public Country()
+    {
+        // initialise instance variables
+        name = "Madam's Land";
+        areaInSquareKilometers = 0.02;
+        population = 4;
+        isUnitedNationsMember = false;
+        isCountryInDebt = true;
+    }
+
+    public Country(String n, double a, int p, boolean unm, boolean d)
+    {
+        name = n;
+        areaInSquareKilometers = a;
+        population = p;
+        isUnitedNationsMember = unm;
+        isCountryInDebt = d;
+    }   
+
+    public String getName()
+    {
+        // put your code here
+        return name;
+    }
+
+    public void setName(String n)
+    {
+        name = n;
+    }
+    
+    public double getArea()
+    {
+        return areaInSquareKilometers;
+    }
+    
+    public void setArea(double a)
+    {
+        areaInSquareKilometers = a;
+    }
+    
+    public int getPopu()
+    {
+        return population;
+    }
+    
+    public void setPopu(int p)
+    {
+        population = p;
+    }
+    
+    public boolean getUNM()
+    {
+        return isUnitedNationsMember;
+    }
+    
+    public void setUNM(boolean unm)
+    {
+        isUnitedNationsMember = unm;
+    }
+    
+    public boolean getIsCountryDebt()
+    {
+        return isCountryInDebt;
+    }
+    
+    public void setIsCountryDebt(boolean d)
+    {
+        isCountryInDebt = d;
+    }
+    
+    public void printInfo()
+    {
+        System.out.println("The name of the country is " + getName());
+        System.out.println("The area of the country is " + getArea());
+        System.out.println("The population of the country is " + getPopu());
+        System.out.println("Is this country a member of the United Nations? " + getUNM());
+        System.out.println("Is the country in debt? " + getIsCountryDebt());
+    }
+}
+
+public class TestCountry
+{
+    public static void main()
+    {
+        Country c = new Country();
+        c.printInfo();
+        c.setPopu(5);
+        c.printInfo();
+    }
+}
