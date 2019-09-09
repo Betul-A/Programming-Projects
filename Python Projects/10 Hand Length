@@ -1,0 +1,24 @@
+# This program is from the MITx-6.00.1 Introduction to Computer Science & Programming using Python.
+# It is Problem 4 of 7 in the Problem Set for Week 4: Good Programming Practices.
+
+# Problem 4 - Hand Length
+
+# We are now ready to begin writing the code that interacts with the player. We'll be implementing the 
+# playHand function. This function allows the user to play out a single hand. First, though, you'll need to 
+# implement the helper calculateHandlen function, which can be done in under five lines of code.
+
+# official code begins here:
+
+def calculateHandlen(hand):
+    """ 
+    Returns the length (number of letters) in the current hand.
+    
+    hand: dictionary (string int)
+    returns: integer
+    """
+    sum = 0
+
+    for value in hand.values():
+        sum += value
+
+    return sum
