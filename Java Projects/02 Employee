@@ -1,0 +1,109 @@
+// Program that has an employee object that mocks a really worker in a company.
+
+public class Employee
+{
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String IDNum;
+    private String title;
+    private double salary;
+
+    public Employee()
+    {
+        firstName = "Mischelle";
+        lastName = "Beerbaum";
+        age = 17;
+        IDNum = "420-69-9420";
+        title = "student that deleted her test class";
+        salary = 0;
+    }
+
+    public Employee(String f, String l, int a, String n, String t, double s)
+    {
+        firstName = f;
+        lastName = l;
+        age = a;
+        IDNum = n;
+        title = t;
+        salary = s;
+    }
+    
+    public Employee(String f, String l, int a, String t, double s)
+    {
+        firstName = f;
+        lastName = l;
+        age = a;
+        IDNum = "000-00-0000";
+        title = t;
+        salary = s;
+    }
+    
+    public String getFirst()
+    {
+        return firstName;
+    }
+    
+    public String getLast()
+    {
+        return lastName;
+    }
+    
+    public void setID(String n)
+    {
+        IDNum = n;
+    }
+    
+    public String getID()
+    {
+        return IDNum;
+    }
+    
+    public void increaseAge()
+    {
+        age = age + 1;
+    }
+    
+    public void giveRaise(double s)
+    {
+        salary = salary + s;
+    }
+    
+    public void changePosition(String t, double s)
+    {
+        title = t;
+        salary = s;
+    }
+    
+    public void fire()
+    {
+        title = "terminated";
+        salary = 0;
+    }
+    
+    public void printPersonnelReport()
+    {
+        System.out.println("Employee's first name is " + getFirst());
+        System.out.println("Employee's last name is " + getLast());
+        System.out.println("Employee's age is " + age);
+        System.out.println("Employee's ID number is " +getID());
+        System.out.println("Employee's title is " + title);
+        System.out.println("Employee's salary is " + salary);
+    }
+}
+
+public class TestEmployee
+{
+    public static void main()
+    {
+        Employee FF = new Employee ("Fred", "Flinstone", 35, "011-11-0088", "Bronto-Crane Operator", 33000);
+        FF.printPersonnelReport();
+        FF.giveRaise(3000);
+        FF.printPersonnelReport();
+        FF.fire();
+        FF.printPersonnelReport();
+        FF.increaseAge();
+        FF.changePosition("Quarry Boss", 60000);
+        FF.printPersonnelReport();
+    }
+}
