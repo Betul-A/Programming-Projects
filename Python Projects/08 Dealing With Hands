@@ -1,0 +1,27 @@
+# This program is from the MITx-6.00.1 Introduction to Computer Science & Programming using Python.
+# It is Problem 2 of 7 in the Problem Set for Week 4: Good Programming Practices.
+
+# Problem 2 - Dealing with Hands
+
+# A hand is the set of letters held by a player during the game. The player is initially dealt a set of random 
+# letters. For example, the player could start out with the following hand: a, q, l, m, u, i, l. In our program, a hand will 
+# be represented as a dictionary: the keys are (lowercase) letters and the values are the number of times the particular 
+# letter is repeated in that hand. For example, the above hand would be represented as:
+# hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}    
+
+# Implement the updateHand function. Make sure this function has no side effects: i.e., it must not mutate the hand 
+# passed in. Before pasting your function definition here, be sure you've passed the appropriate tests in test_ps4a.py.
+
+# Your implementation of updateHand should be short (ours is 4 lines of code). It does not need to call any helper functions.
+
+# official code begins here:
+
+def updateHand(hand, word):
+
+    output = hand.copy()
+
+    for letter in word:
+        if letter in output.keys():
+            output[letter] -= 1
+
+    return output
