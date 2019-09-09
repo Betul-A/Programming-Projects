@@ -2,21 +2,23 @@
 
 public class Account
 {
-    // instance variables - replace the example below with your own
     private double balance;
     private int accountNumber;
+    private static int nextAccountNumber;
 
     public Account()
     {
         // initialise instance variables
         balance = 0;
-        accountNumber = 10;
+        accountNumber = nextAccountNumber;
+        nextAccountNumber ++;
     }
     
     public Account(double b, int n)
     {
         balance = b;
-        accountNumber = n;
+        accountNumber = nextAccountNumber;
+        nextAccountNumber ++;
     }
 
     public double getBalance()
