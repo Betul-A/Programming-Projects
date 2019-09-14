@@ -1,0 +1,134 @@
+// Program that is designed to mimic a car dealership where you can create car objects and place them in a dealership class. 
+
+public class Car
+{
+    private String color;
+    private String make;
+    private String model;
+    private int mileage;
+    private double price;
+
+    public Car(String c, String ma, String mo, int mi, double p)
+    {
+        color = c;
+        make = ma;
+        model = mo;
+        mileage = mi;
+        price = p;
+    }
+
+    public String getColor()
+    {
+        return color;
+    }
+    
+    public String getMake()
+    {
+        return make;
+    }
+    
+    public String getModel()
+    {
+        return model;
+    }
+    
+    public int getMileage()
+    {
+        return mileage;
+    }
+    
+    public double getPrice()
+    {
+        return price;
+    }
+    
+    public void changeColor(String c)
+    {
+        color = c;
+    }
+    
+    public void changePrice(double p)
+    {
+        price = p;
+    }
+    
+    public void drive(int d)
+    {
+        mileage = mileage + d;
+    }
+    
+    public void printInfo()
+    {
+        System.out.println("Color: " + getColor());
+        System.out.println("Make: " + getMake());
+        System.out.println("Model: " + getModel());
+        System.out.println("Mileage: " + getMileage());
+        System.out.println("Price: " + getPrice());
+    }
+}
+
+public class Dealership
+{
+    private double profit;
+    private Car car1;
+    private Car car2;
+    private Car car3;
+    private Car car4;
+    
+    public Dealership()
+    {
+        car1 = new Car("white", "audi", "2020 R8", 1000, 2000000);
+        car2 = new Car("blue", "nissan", "rogue", 2, 2);
+        car3 = new Car("black", "tesla", "model x", 5, 50000);
+        car4 = new Car("tan", "voltswagon", "jetta", 4, 800000);
+        profit = 0.0;
+    }
+    
+    public Dealership(Car one, Car two, Car three, Car four)
+    {
+        car1 = one;
+        car2 = two;
+        car3 = three;
+        car4 = four;
+        profit = 0.0;
+    }
+    
+    public void printInventory()
+    {
+        car1.printInfo();
+        car2.printInfo();
+        car3.printInfo();
+        car4.printInfo();
+        System.out.println("The current profit is " + profit);
+    }
+    
+    public void sellCar1andReplace(Car newCar)
+    {
+        profit = profit + car1.getPrice();
+        car1 = newCar;
+    }
+    
+    public void sellCar2andReplace(Car newCar)
+    {
+        profit = profit + car2.getPrice();
+        car2 = newCar;
+    }
+}
+
+public class testDealership
+{
+    public static void main()
+    {
+        Car uno = new Car("purple", "bmw", "rogue", 5, 25000);
+        Car dos = new Car("pink", "nissan", "ultimata", 8, 30000);
+        Car tres = new Car("red", "honda", "van", 10, 40000);
+        Car quatro = new Car("black", "tesla", "X", 1, 50000);
+        Dealership luteb = new Dealership(uno, dos, tres, quatro);
+        luteb.printInventory();
+        Car cinco = new Car("grey", "voltswagon", "green", 15, 23);
+        Car seis = new Car("white", "nisaan", "rogue", 2, 1);
+        luteb.sellCar1andReplace(cinco);
+        luteb.sellCar2andReplace(seis);
+        luteb.printInventory();
+    }
+}
