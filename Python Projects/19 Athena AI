@@ -1,0 +1,24 @@
+# One of my first projects, meet Athena. She is a very basic artificial intelligence. 
+
+import random
+while True:
+    x = input("Please type in a message! ")
+    print(x)
+    if x == "I programmed you Athena!!!":
+        print("Hello there Munise. It is nice to see you again.")
+    elif x == "Goodbye":
+        print("Alright then, goodbye!")
+        break
+    else:
+        print(random.choice(['Great suggestion about: ' + x, 'Great comment:' + x, 'Very deep conversation', 'What are you talking about: ' + x, x + ' My name is Athena', 'Greetings. My name is Athena and did I here you correctly? Did you say: ' + x]))
+
+
+'''
+y = input("I programmed you Athena!!!")
+z = print("Hello there Munise. It is wonderful to see you.")
+if input(y) == "password":
+    print(z)
+else:
+    print(x)
+print(random.choice(['Great suggestion about:'+x, 'Great comment:'+x, 'Very deep conversation', 'What are you talking about:'+x, x+' My name is Athena', 'Greetings. My name is Athena and did I here you correctly? Did you say:'+x]))
+'''
