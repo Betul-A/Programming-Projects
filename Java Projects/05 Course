@@ -1,0 +1,196 @@
+// Do Your Own, just some random programs to help learn more about Java and programming
+
+public class Course
+{
+    private String courseName;
+    private String teacherName;
+    private int numStudents;
+    private double averageGrade;
+    
+    public Course()
+    {
+        courseName = "Alchemy 101";
+        teacherName = "Professor Ahad";
+        numStudents = 10;
+        averageGrade = 80;
+    }
+
+    public Course(String c, String t, int u, double f)
+    {
+        courseName = c;
+        teacherName = t;
+        numStudents = u;
+        averageGrade = f;
+    }
+    
+    public Course(String t, int u, double f)
+    {
+        courseName = "Language & Composition";
+        teacherName = t;
+        numStudents = u;
+        averageGrade = f;
+    }
+    
+    public String getCourse()
+    {
+        return courseName;
+    }
+    
+    public String getTeacherName()
+    {
+        return teacherName;
+    }
+    
+    public double getAverageGrade()
+    {
+        return averageGrade;
+    }
+    
+    public void setCourse(String c)
+    {
+        courseName = c;
+    }
+    
+    public void setTeacher(String t)
+    {
+        teacherName = t;
+    }
+    
+    public void setAverageGrade(double f)
+    {
+        averageGrade = f;
+    }
+    
+    public void cancelCourse()
+    {
+       averageGrade = 0;
+       numStudents = 0;
+       courseName = "not available"; 
+    }
+    
+    public void removeStudent(int s)
+    {
+        numStudents = numStudents - s;
+    }
+    
+    public void addStudent(int s)
+    {
+        numStudents = numStudents + s;
+    }
+    
+    public void printCourseInformation()
+    {
+        System.out.println("Course Name " + courseName);
+        System.out.println("Teacher Name " + teacherName);
+        System.out.println("This course currently has " + numStudents);
+        System.out.println("The current average grade is " + averageGrade);
+    }
+}
+
+public class TeacherInformation
+{
+    private String jobTitle;
+    private int numCourses;
+    private double numHoursWorked;
+    private String homeDepartment;
+    private Course mainCourseTaught;
+
+    public TeacherInformation()
+    {
+        jobTitle = "Teacher";
+        numCourses = 4;
+        numHoursWorked = 7.5;
+        homeDepartment = "Science";
+        mainCourseTaught = new Course("Spellcasting", "Professor Emalia", 18, 0);
+    }
+    
+    public TeacherInformation(String t, int c, double h, String d, Course s)
+    {
+        jobTitle = t;
+        numCourses = c;
+        numHoursWorked = h;
+        homeDepartment = d;
+        mainCourseTaught = s;
+    }
+    
+    public TeacherInformation(String t, int c, String d, Course s)
+    {
+        jobTitle = t;
+        numCourses = c;
+        numHoursWorked = 6.8;
+        homeDepartment = d;
+        mainCourseTaught = s;
+    }
+    
+    public int getNumCourses()
+    {
+        return numCourses;
+    }
+   
+    public double getnumHoursWorked()
+    {
+        return numHoursWorked;
+    }
+    
+    public String getJobTitle()
+    {
+        return jobTitle;
+    }
+    
+    public void setJobTitle(String t)
+    {
+        jobTitle = t;
+    }
+    
+    public void setNumCourses(int c)
+    {
+        numCourses = c;
+    }
+    
+    public void setHomeDepartment(String d)
+    {
+        homeDepartment = d;
+    }
+    
+    public void fireTeacher()
+    {
+        jobTitle = "You are politely asked to resign by the Dean.";
+        numCourses = 0;
+        numHoursWorked = 0;
+        homeDepartment = "You were fired bruh get outta here.";
+        mainCourseTaught.cancelCourse();
+    }
+    
+    public void getWeeklyHoursWorked()
+    {
+        numHoursWorked = numHoursWorked * 5;
+    }
+    
+    public void printTeacherInformation()
+    {
+        System.out.println("You currently hold the title of " + jobTitle);
+        System.out.println("Number of courses taught: " + numCourses);
+        System.out.println("How many hours worked per day: " + numHoursWorked);
+        System.out.println("Your home department where you work is " + homeDepartment);
+        mainCourseTaught.printCourseInformation();
+        System.out.println();
+    }
+}
+
+public class TestTeacherInfo
+{
+    public static void main()
+    {
+        Course blacksmithing = new Course("Blacksmithing", "Professor Caindale", 5, 97);
+        TeacherInformation caindale = new TeacherInformation("Blacksmith Professor", 1, 10, "Arts", blacksmithing);
+        caindale.printTeacherInformation();
+        blacksmithing.addStudent(1);
+        caindale.printTeacherInformation();
+        blacksmithing.removeStudent(5);
+        caindale.printTeacherInformation();
+        caindale.getWeeklyHoursWorked();
+        caindale.printTeacherInformation();
+        caindale.fireTeacher();
+        caindale.printTeacherInformation();
+    }
+}
