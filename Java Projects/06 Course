@@ -1,0 +1,159 @@
+// In class I forgot that another project was named Course, so there ya go. Here is more class practice, with if statements now!
+
+public class Course
+{
+    private String courseName;
+    private int numMissedClasses;
+    private int test1;
+    private int test2;
+    private int test3;
+    private int test4;
+    
+    public Course(String c, int m, int t1, int t2, int t3, int t4)
+    {
+        courseName = c;
+        numMissedClasses = m;
+        test1 = t1;
+        test2 = t2;
+        test3 = t3;
+        test4 = t4;
+    }
+    
+    public void setTest1(int t1)
+    {
+        test1 = t1;
+    }
+    
+    public void setTest2(int t2)
+    {
+        test2 = t2;
+    }
+    
+    public void setTest3(int t3)
+    {
+        test3 = t3;
+    }
+    
+    public void setTest4(int t4)
+    {
+        test4 = t4;
+    }
+    
+    public int getNumMissedClasses()
+    {
+        return numMissedClasses;
+    }
+    
+    public int calcSum()
+    {
+        return test1 + test2 + test3 + test4;
+    }
+    
+    public double calcAverage()
+    {
+        return calcSum() / 4.0;
+    }
+    
+    public double getLowest()
+    {
+        int test = test1;
+        if (test > test2)
+        {
+            test = test2;
+        }
+        if (test > test3)
+        {
+            test = test3;
+        }
+        if (test > test4)
+        {
+            test = test4;
+        }
+        return test;
+    }
+    
+    public double calcPenalty()
+    {
+        return (getNumMissedClasses() / 5) * 0.1;
+    }
+    
+    public double calcModifiedAverage()
+    {
+        return ((calcSum() - getLowest())/3) - (((calcSum() - getLowest())/3) * calcPenalty());
+    }
+    
+    public int numMissedClassesUntillNextPenalty()
+    {
+        return 5 - (getNumMissedClasses() % 5);
+    }
+    
+    public void printReport()
+    {
+        System.out.println("Grade 1: " + test1);
+        System.out.println("Grade 2: " + test2);
+        System.out.println("Grade 3: " + test3);
+        System.out.println("Grade 4: " + test4);
+        System.out.println("The straight up average is " + calcAverage());
+        System.out.println("The modified average is " + calcModifiedAverage());
+        System.out.println("You missed this many classes " + getNumMissedClasses());
+        System.out.println("How many classes until next penalty " + numMissedClassesUntillNextPenalty());
+        System.out.println("");
+    }
+}
+
+public class Student
+{
+    private String first;
+    private String last;
+    private Course course1;
+    private Course course2;
+    private Course course3;
+    private Course course4;
+
+    public Student(String f, String l, Course c1, Course c2, Course c3, Course c4)
+    {
+        first = f;
+        last = l;
+        course1 = c1;
+        course2 = c2;
+        course3 = c3;
+        course4 = c4;
+    }
+
+    public double calcFinalAverage()
+    {
+        return (course1.calcModifiedAverage() + course2.calcModifiedAverage() + course3.calcModifiedAverage() + course4.calcModifiedAverage()) / 4;
+    }
+    
+    public int getTotalMissedClasses()
+    {
+        return course1.getNumMissedClasses() + course2.getNumMissedClasses() + course3.getNumMissedClasses() + course4.getNumMissedClasses();
+    }
+    
+    public void printStudentReport()
+    {
+        System.out.println("Final Average: " + calcFinalAverage());
+        System.out.println("Number of Missed Classes: " + getTotalMissedClasses());
+        System.out.println("");
+        course1.printReport();
+        course2.printReport();
+        course3.printReport();
+        course4.printReport();
+        System.out.println("");
+    }
+}
+
+public class testStudent
+{
+    public static void main()
+    {
+        Course courseA = new Course("APCS", 5, 100, 100, 99, 97);
+        Course courseB = new Course("Calculus", 4, 95, 94, 96, 98);
+        Course courseC = new Course("Alg II", 12, 100, 100, 99, 100);
+        Course courseD = new Course("English", 2, 10, 10, 9, 8);
+        Student kid = new Student("Kid", "Insert Last Name Here", courseA, courseB, courseC, courseD);
+        kid.calcFinalAverage();
+        kid.getTotalMissedClasses();
+        kid.printStudentReport();
+    }
+}
