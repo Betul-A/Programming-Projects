@@ -1,0 +1,257 @@
+// Progam that sets up a banking company, lots of classes!
+
+public class Bank
+{
+    private String bankName;
+    private Account account1;
+    private Account account2;
+    private Account account3;
+    private Account account4;
+    private Employee president;
+    private Employee vicePresident;
+    private Employee teller;
+    
+    public Bank()
+    {
+        bankName = "Madam's Bank";
+        account1 = new Account(0);
+        account2 = new Account(1);
+        account3 = new Account(2);
+        account4 = new Account(3);
+        president = new Employee("Percy", "Ayame", 18, "000-00-0000", "President", 10);
+        vicePresident = new Employee("Walter", "Time", 16, "000-00-0001", "Vice President", 9);
+        teller = new Employee("Lydia", "Art", 15, "000-00-0002", "Teller", 5);
+    }
+
+    public Bank(String b, Account a1, Account a2, Account a3, Account a4, Employee p, Employee v, Employee t)
+    {
+        bankName = b;
+        account1 = a1;
+        account2 = a2;
+        account3 = a3;
+        account4 = a4;
+        president = p;
+        vicePresident = v;
+        teller = t;
+    }
+    
+    public double calcTotalFunds()
+    {
+        return account1.getBalance() + account2.getBalance() + account3.getBalance() + account4.getBalance();
+    }
+    
+    public void chargeFees(double f)
+    {
+        account1.withdraw(f);
+        account2.withdraw(f);
+        account3.withdraw(f);
+        account4.withdraw(f);
+    }
+    
+    public void addInterest()
+    {
+        account1.deposit(account1.getBalance() * .03);
+        account2.deposit(account2.getBalance() * .03);
+        account3.deposit(account3.getBalance() * .03);
+        account4.deposit(account4.getBalance() * .03);
+    }
+    
+    public void giveRaise(double r)
+    {
+        president.giveRaise(r);
+        vicePresident.giveRaise(r);
+        teller.giveRaise(r);
+    }
+    
+    public void replaceTeller(Employee newTeller)
+    {
+        teller = newTeller;
+    }
+    
+    public void fireALL()
+    {
+        president.fire();
+        vicePresident.fire();
+        teller.fire();
+    }
+    
+    public void printCompanyReport()
+    {
+        president.printPersonnelReport();
+        vicePresident.printPersonnelReport();
+        teller.printPersonnelReport();
+        account1.printSlip();
+        account2.printSlip();
+        account3.printSlip();
+        account4.printSlip();
+        System.out.println("This is " + bankName);
+    }
+}
+
+public class Account
+{
+    private double balance;
+    private int accountNumber;
+    private static int nextAccountNumber;
+
+    public Account()
+    {
+        // initialise instance variables
+        balance = 0;
+        accountNumber = nextAccountNumber;
+        nextAccountNumber ++;
+    }
+    
+    public Account(double b)
+    {
+        balance = b;
+        accountNumber = nextAccountNumber;
+        nextAccountNumber ++;
+    }
+
+    public double getBalance()
+    {
+        return balance;
+    }
+    
+    public int getAccountNumber()
+    {
+        return accountNumber;
+    }
+    
+    public void deposit(double d)
+    {
+        balance = balance + d;
+    }
+    
+    public void withdraw(double w)
+    {
+        balance = balance - w;
+    }
+    
+    public void transfer(Account other, double t)
+    {
+        this.withdraw(t);
+        other.deposit(t);
+    }
+    
+    public void printSlip()
+    {
+        System.out.println("Your account number is " + getAccountNumber());
+        System.out.println("Your current balance is " + getBalance());
+    }
+}
+
+public class Employee
+{
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String IDNum;
+    private String title;
+    private double salary;
+
+    public Employee()
+    {
+        firstName = "Mischelle";
+        lastName = "Beerbaum";
+        age = 17;
+        IDNum = "420-69-9420";
+        title = "student that deleted her test class";
+        salary = 0;
+    }
+
+    public Employee(String f, String l, int a, String n, String t, double s)
+    {
+        firstName = f;
+        lastName = l;
+        age = a;
+        IDNum = n;
+        title = t;
+        salary = s;
+    }
+    
+    public Employee(String f, String l, int a, String t, double s)
+    {
+        firstName = f;
+        lastName = l;
+        age = a;
+        IDNum = "000-00-0000";
+        title = t;
+        salary = s;
+    }
+    
+    public String getFirst()
+    {
+        return firstName;
+    }
+    
+    public String getLast()
+    {
+        return lastName;
+    }
+    
+    public void setID(String n)
+    {
+        IDNum = n;
+    }
+    
+    public String getID()
+    {
+        return IDNum;
+    }
+    
+    public void increaseAge()
+    {
+        age = age + 1;
+    }
+    
+    public void giveRaise(double s)
+    {
+        salary = salary + s;
+    }
+    
+    public void changePosition(String t, double s)
+    {
+        title = t;
+        salary = s;
+    }
+    
+    public void fire()
+    {
+        title = "terminated";
+        salary = 0;
+    }
+    
+    public void printPersonnelReport()
+    {
+        System.out.println("Employee's first name is " + getFirst());
+        System.out.println("Employee's last name is " + getLast());
+        System.out.println("Employee's age is " + age);
+        System.out.println("Employee's ID number is " +getID());
+        System.out.println("Employee's title is " + title);
+        System.out.println("Employee's salary is " + salary);
+    }
+}
+
+public class TestBank
+{
+    public static void main()
+    {
+        Account a1 = new Account(0);
+        Account a2 = new Account(1);
+        Account a3 = new Account(2);
+        Account a4 = new Account(3);
+        Employee time = new Employee("Adelaide", "Time", 24, "000-00-0001", "President", 1);
+        Employee ayame = new Employee("Kadin", "Ayame", 27, "000-00-0020", "Vice President", 5);
+        Employee adrin = new Employee("Lexandrius", "Adrin", 24, "000-00-0300", "Teller", 20);
+        Bank chaos = new Bank("Birth of Chaos", a1, a2, a3, a4, time, ayame, adrin);
+        chaos.printCompanyReport();
+        System.out.println("Your total funds are " + chaos.calcTotalFunds());
+        chaos.addInterest();
+        chaos.printCompanyReport();
+        Employee veku = new Employee("Seb", "Veku", 25, "000-00-4000", "New Teller", 25);
+        chaos.replaceTeller(veku);
+        chaos.printCompanyReport();
+    }
+}
